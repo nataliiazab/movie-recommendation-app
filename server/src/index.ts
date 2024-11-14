@@ -1,33 +1,28 @@
-// import express from "express";
-// import { PrismaClient } from "@prisma/client";
+import express from "express";
+import { PrismaClient } from "@prisma/client";
 
-// const app = express();
-// const prisma = new PrismaClient();
-
-// // Middleware to parse JSON request bodies
-// app.use(express.json());
-
-// // Basic API route for getting movies
-// app.get("/movies", async (req, res) => {
-//   try {
-//     const movies = await prisma.movie.findMany();
-//     res.status(200).json(movies);
-//   } catch (error) {
-//     res.status(500).json({ error: "Failed to fetch movies" });
-//   }
-// });
-
-// // Start the server
-// app.listen(3000, () => {
-//   console.log("Server is running on port 3000");
-// });
-
-const express = require("express");
 const app = express();
+const prisma = new PrismaClient();
 
-// Define your API routes
-app.get("/api/hello", (req: any, res: any) => {
-  res.json({ message: "Hello from the server!" });
+app.use(express.json());
+
+// Root route
+app.get("/", (req, res) => {
+  res.send("Welcome to the Movie Recommendation API");
 });
 
-module.exports = app;
+// API endpoint to fetch movies
+app.get("/movies", async (req, res) => {
+  try {
+    const movies = await prisma.movie.findMany();
+    res.json(movies); // Return the list of movies
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch movies" });
+  }
+});
+
+// Start the server
+const PORT = 4000;
+app.listen(PORT, () => {
+  console.log(`Server is running at http://localhost:${PORT}`);
+});

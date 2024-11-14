@@ -5,12 +5,12 @@ const app = express();
 const prisma = new PrismaClient();
 
 // Root route
-app.get("/", (req: Request, res: Response) => {
+app.get("/api", (req: Request, res: Response) => {
   res.send("Welcome to the Movie Recommendation API");
 });
 
 // API endpoint to fetch movies
-app.get("/movies", async (req: Request, res: Response) => {
+app.get("/api/movies", async (req: Request, res: Response) => {
   try {
     const movies = await prisma.movie.findMany();
     res.json(movies); // Return the list of movies

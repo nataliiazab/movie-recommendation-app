@@ -2,22 +2,20 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 
-
 datasource db {
-  provider = "postgresql"
-  url = env("POSTGRES_URL")
+  provider = "postgresql"  // Make sure this is set to postgresql
+  url      = env("POSTGRES_URL")  // The connection string for your PostgreSQL database
 }
 
-// provider = "sqlite"
-//url      = env("DATABASE_URL")
-
-
+// This is the Prisma client generator, you don't need to change it
 generator client {
   provider = "prisma-client-js"
 }
 
+// Define your models, such as Movie
 model Movie {
   id    Int    @id @default(autoincrement())
   title String
   genre String
 }
+

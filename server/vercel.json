@@ -3,8 +3,15 @@
     {
       "src": "src/index.ts",
       "use": "@vercel/node",
-      "config": { "outputDirectory": "build" }
+      "config": {
+        "outputDirectory": "build"
+      }
     }
   ],
-  "routes": [{ "src": "/(.*)", "dest": "src/index.ts" }]
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/src/index.ts"
+    }
+  ]
 }

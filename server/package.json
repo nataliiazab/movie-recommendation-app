@@ -4,11 +4,10 @@
   "description": "",
   "main": "build/index.js",
   "scripts": {
-    "build": "prisma generate && tsc",
+    "build": "prisma generate && next build",
     "dev": "ts-node src/index.ts",
     "start": "node build/index.js",
-    "deploy": "vercel --prod",
-    "postinstall": "prisma generate"
+    "deploy": "vercel --prod"
   },
   "dependencies": {
     "@prisma/client": "^5.22.0",

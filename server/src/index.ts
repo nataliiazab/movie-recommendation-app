@@ -1,10 +1,14 @@
 import { VercelRequest, VercelResponse } from "@vercel/node"; // Import for Vercel handler
 import { PrismaClient } from "@prisma/client"; // Prisma client
 import express, { Request, Response } from "express"; // Import for local server
+import cors from "cors";
 
 const prisma = new PrismaClient();
 
 const app = express(); // Create Express app for local development
+
+// Apply CORS middleware globally
+app.use(cors());
 
 // Root route
 async function rootHandler(

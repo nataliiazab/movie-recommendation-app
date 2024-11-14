@@ -1,12 +1,13 @@
-
+import React from "react";
 import MovieList from "./components/MovieList";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
+    <div>
+      <h1>Movie Recommendation App</h1>
       <MovieList />
     </div>
   );
-}
+};
 
 export default App;

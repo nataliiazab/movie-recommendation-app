@@ -2,22 +2,22 @@
   "version": 2,
   "builds": [
     {
-      "src": "server/src/index.ts", // Your entry point for the backend server
-      "use": "@vercel/node" // Vercel Node.js runtime
+      "src": "server/src/index.ts", 
+      "use": "@vercel/node" 
     },
     {
-      "src": "client/package.json", // React frontend build
-      "use": "@vercel/react" // Vercel React runtime
+      "src": "client/package.json", 
+      "use": "@vercel/react" 
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)", // Matches any API request (like /api/movies)
-      "dest": "/server/src/index.ts" // Routes all API requests to the Express server
+      "src": "/api/(.*)", 
+      "dest": "/server/src/index.ts"
     },
     {
-      "src": "/(.*)", // Matches any other routes (for frontend)
-      "dest": "/client/$1" // Routes to the React app
+      "src": "/(.*)", 
+      "dest": "/client/$1"
     }
   ]
 }

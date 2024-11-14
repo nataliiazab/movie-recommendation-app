@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ES2020", // Set the output version of JS
-    "module": "CommonJS", // Use CommonJS module system (needed for Node.js)
-    "strict": true, // Enable strict type-checking
-    "esModuleInterop": true, // Allow compatibility with ES modules
-    "skipLibCheck": true, // Skip library checks (speed up compilation)
-    "forceConsistentCasingInFileNames": true, // Ensure consistent casing in file names
-    "outDir": "./build", // Output compiled JS to the 'build' folder
-    "rootDir": "./src" // Specify the root directory for TypeScript source files
+    "target": "ES2020",
+    "module": "CommonJS",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./build",
+    "rootDir": "./src"
   },
-  "include": ["src/**/*.ts"], // Include all TypeScript files in the src folder
-  "exclude": ["node_modules", "build"] // Exclude node_modules and build from compilation
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
 }

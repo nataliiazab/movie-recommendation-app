@@ -13,6 +13,7 @@
     "@prisma/client": "^5.22.0",
     "@types/express": "^5.0.0",
     "@types/node": "^22.9.0",
+    "@vercel/node": "^3.2.24",
     "express": "^4.21.1",
     "prisma": "^5.22.0"
   },

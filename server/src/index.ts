@@ -1,18 +1,16 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 
 const app = express();
 const prisma = new PrismaClient();
 
-app.use(express.json());
-
 // Root route
-app.get("/", (req, res) => {
+app.get("/", (req: Request, res: Response) => {
   res.send("Welcome to the Movie Recommendation API");
 });
 
 // API endpoint to fetch movies
-app.get("/movies", async (req, res) => {
+app.get("/movies", async (req: Request, res: Response) => {
   try {
     const movies = await prisma.movie.findMany();
     res.json(movies); // Return the list of movies

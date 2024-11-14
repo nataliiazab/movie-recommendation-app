@@ -2,12 +2,13 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "build/index.js", 
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc && prisma generate",
-    "dev": "ts-node src/index.ts",
-    "deploy": "vercel build"
+    "build": "tsc && prisma generate",  
+    "dev": "ts-node src/index.ts",      
+    "start": "node build/index.js",     
+    "deploy": "vercel --prod"           
   },
   "dependencies": {
     "@prisma/client": "^5.22.0",

@@ -1,27 +1,43 @@
+// client/src/components/MovieList.tsx
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 interface Movie {
   id: number;
   title: string;
-  genre: string;
+  description: string;
 }
 
 const MovieList: React.FC = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    fetch("/api/movies")
-      .then((response) => response.json())
-      .then((data) => setMovies(data));
+    // Fetch movies from your backend API
+    axios
+      .get("http://localhost:4000/movies") // Update URL for production (on Vercel)
+      .then((response) => {
+        setMovies(response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching movies:", error);
+        setLoading(false);
+      });
   }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
-      <h1>Movies</h1>
+      <h2>Movie List</h2>
       <ul>
         {movies.map((movie) => (
           <li key={movie.id}>
-            {movie.title} - {movie.genre}
+            <h3>{movie.title}</h3>
+            <p>{movie.description}</p>
           </li>
         ))}
       </ul>

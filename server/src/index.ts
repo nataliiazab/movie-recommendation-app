@@ -1,15 +1,24 @@
 import { VercelRequest, VercelResponse } from "@vercel/node"; // Import for Vercel handler
 import { PrismaClient } from "@prisma/client"; // Prisma client
+import express, { Request, Response } from "express"; // Import for local server
 
 const prisma = new PrismaClient();
 
+const app = express(); // Create Express app for local development
+
 // Root route
-async function rootHandler(req: VercelRequest, res: VercelResponse) {
+async function rootHandler(
+  req: VercelRequest | Request,
+  res: VercelResponse | Response
+) {
   res.send("Welcome to the Movie Recommendation API");
 }
 
 // Movie route
-async function movieHandler(req: VercelRequest, res: VercelResponse) {
+async function movieHandler(
+  req: VercelRequest | Request,
+  res: VercelResponse | Response
+) {
   try {
     const movies = await prisma.movie.findMany();
     res.json(movies);
@@ -18,7 +27,19 @@ async function movieHandler(req: VercelRequest, res: VercelResponse) {
   }
 }
 
-// Default exported function to handle requests
+// Local development server (using Express)
+if (process.env.VERCEL === undefined) {
+  // If running locally, use Express
+  app.get("/", rootHandler);
+  app.get("/movies", movieHandler);
+
+  const port = process.env.PORT || 4000;
+  app.listen(port, () => {
+    console.log(`Local server running at http://localhost:${port}`);
+  });
+}
+
+// Default exported function to handle requests (for Vercel)
 export default function handler(req: VercelRequest, res: VercelResponse) {
   if (req.url === "/") {
     return rootHandler(req, res); // Handle root route

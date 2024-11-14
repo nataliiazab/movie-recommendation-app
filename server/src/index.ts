@@ -9,7 +9,7 @@ app.get("/", (req, res) => {
 });
 
 // Use the movie route
-app.get("/api/movies", getMovies); // Add the movie route to your server
+app.get("/movies", getMovies); // Add the movie route to your server
 
 // Start the server
 const PORT = 4000;

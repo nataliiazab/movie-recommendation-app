@@ -22,20 +22,12 @@
 //   console.log("Server is running on port 3000");
 // });
 
-import express from "express";
-import path from "path";
-
+const express = require("express");
 const app = express();
 
-// Serve static files from the "public" directory
-app.use(express.static(path.join(__dirname, "public")));
-
-// Other routes go here
-app.get("/", (req, res) => {
-  res.send("Hello World!");
+// Define your API routes
+app.get("/api/hello", (req: any, res: any) => {
+  res.json({ message: "Hello from the server!" });
 });
 
-// Start the server
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
-});
+module.exports = app;

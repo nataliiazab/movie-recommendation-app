@@ -1,7 +1,7 @@
-import React from "react";
-import MovieList from "./components/MovieList";
+//client/src/App.tsx
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import MovieList from "./components/MovieList";
 
 const App: React.FC = () => {
   return (

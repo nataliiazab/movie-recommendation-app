@@ -1,3 +1,4 @@
+// client/src/components/MovieList.tsx
 import React from "react";
 import useFetchMovies from "../hooks/useFetchMovies";
 import MovieCard from "./MovieCard";

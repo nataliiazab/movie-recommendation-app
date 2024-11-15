@@ -1,5 +1,5 @@
+//client/src/components/MovieCard.tsx
 import { useState } from "react";
-
 
 type Movie = {
   id: number;
@@ -23,6 +23,12 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
     );
   }
 
+  // Determine the image URL
+  const imageUrl =
+    imageError || !movie.image
+      ? "https://mnlht.com/wp-content/uploads/2017/06/no_image_placeholder.png"
+      : movie.image;
+
   return (
     <li
       key={movie.id}
@@ -38,12 +44,7 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
           </div>
         )}
         <img
-          src={
-            imageError
-              ? "fallback-image-url.jpg"
-              : movie.image ||
-                "https://mnlht.com/wp-content/uploads/2017/06/no_image_placeholder.png"
-          }
+          src={imageUrl}
           alt={movie.title || "Movie poster"}
           className={`w-full h-64 object-cover rounded-lg transition-opacity duration-500 ${
             imageLoaded ? "opacity-100" : "opacity-0"
@@ -78,12 +79,6 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
       <div className="mt-4 flex justify-between items-center">
         <button className="bg-indigo-500 text-white text-sm px-4 py-2 rounded-lg hover:bg-indigo-600 transition-colors duration-300">
           View Details
-        </button>
-        <button
-          className="text-indigo-500 text-sm font-semibold hover:underline"
-          onClick={() => console.log(`Bookmarking movie: ${movie.title}`)}
-        >
-          Bookmark
         </button>
       </div>
     </li>

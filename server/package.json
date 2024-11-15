@@ -8,7 +8,8 @@
     "dev": "ts-node src/index.ts",
     "start": "node build/index.js",
     "deploy": "vercel --prod",
-    "postinstall": "npx prisma generate"
+    "postinstall": "npx prisma generate && npx prisma migrate deploy && npx prisma db seed",
+    "seed": "ts-node prisma/seed.ts"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"

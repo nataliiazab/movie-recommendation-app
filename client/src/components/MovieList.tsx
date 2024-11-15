@@ -20,7 +20,7 @@ const MovieList: React.FC = () => {
   useEffect(() => {
     // Fetch movies from your backend API
     axios
-      .get("http://localhost:4000/movies") // Update URL for production (on Vercel)
+      .get("https://movie-recommendation-app-server.vercel.app/movies")
       .then((response) => {
         setMovies(response.data);
         setLoading(false);

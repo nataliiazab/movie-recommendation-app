@@ -9,7 +9,7 @@ type Movie = {
   rating: number;
   description: string;
   image: string;
-}
+};
 // A list of top IMDb movies (200 entries, with year, rating, and genre)
 const topImdbMovies: Movie[] = [
   {
@@ -235,7 +235,8 @@ const topImdbMovies: Movie[] = [
     rating: 8.5,
     description:
       "After a tragic accident, two stage magicians engage in a bitter rivalry to create the ultimate illusion while sacrificing everything they have.",
-    image: "https://image.tmdb.org/t/p/w500/5MXyQfz8xUP3dIFPTubhTsbFY6N.jpg",
+    image:
+      "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/tRNlZbgNCNOpLpbPEz5L8G8A0JN.jpg",
   },
   {
     title: "The Green Mile",
@@ -244,7 +245,8 @@ const topImdbMovies: Movie[] = [
     rating: 8.6,
     description:
       "In a Louisiana prison, a kind death-row inmate with a mysterious gift impacts the lives of the guards overseeing him.",
-    image: "https://image.tmdb.org/t/p/w500/o0lO84GI7qrG6aKF7LQNpCcT7Bg.jpg",
+    image:
+      "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/8VG8fDNiy50H4FedGwdSVUPoaJe.jpg",
   },
   {
     title: "The Shining",
@@ -253,7 +255,8 @@ const topImdbMovies: Movie[] = [
     rating: 8.4,
     description:
       "A family heads to an isolated hotel where an evil presence drives the father to violence while his son sees horrifying visions.",
-    image: "https://image.tmdb.org/t/p/w500/9fgh3Ns1iRzlQNYuJyK0ARQZU7w.jpg",
+    image:
+      "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/nRj5511mZdTl4saWEPoj9QroTIu.jpg",
   },
   {
     title: "The Dark Knight Rises",

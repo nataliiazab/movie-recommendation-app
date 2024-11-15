@@ -13,7 +13,7 @@ type Movie = {
 const MovieCard = ({ movie }: { movie: Movie }) => {
   if (!movie) {
     return (
-      <div className="flex justify-center items-center p-6 bg-gray-100 rounded-lg shadow-md">
+      <div className="flex justify-center items-center p-6 bg-gray-100 rounded-lg">
         <p className="text-gray-500 animate-pulse">Loading movie details...</p>
       </div>
     );
@@ -22,7 +22,7 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
   return (
     <li
       key={movie.id}
-      className="bg-white rounded-xl shadow-lg p-4 transform transition duration-300 hover:scale-105 hover:shadow-xl"
+      className="bg-white rounded-xl border border-gray-200 p-4 transform transition-transform duration-300"
     >
       <img
         src={movie.image || "placeholder-image-url.jpg"}

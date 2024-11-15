@@ -1,12 +1,14 @@
 import React from "react";
 import MovieList from "./components/MovieList";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const App: React.FC = () => {
   return (
     <div>
-      <h1>header</h1>
+      <Header />
       <MovieList />
-      <h1>footer</h1>
+      <Footer />
     </div>
   );
 };

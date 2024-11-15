@@ -7,8 +7,14 @@ const prisma = new PrismaClient();
 
 const app = express(); // Create Express app for local development
 
-// Apply CORS middleware globally
-app.use(cors());
+// Apply CORS middleware globally for all routes (especially for Vercel deployment)
+app.use(
+  cors({
+    origin: "*", // Allow all domains (use specific domains in production for better security)
+    methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
+  })
+);
 
 // Root route
 async function rootHandler(
@@ -45,6 +51,11 @@ if (process.env.VERCEL === undefined) {
 
 // Default exported function to handle requests (for Vercel)
 export default function handler(req: VercelRequest, res: VercelResponse) {
+  // Apply CORS here for Vercel deployment
+  res.setHeader("Access-Control-Allow-Origin", "*"); // Allow all domains for CORS
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE"); // Allow these HTTP methods
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization"); // Allow these headers
+
   if (req.url === "/") {
     return rootHandler(req, res); // Handle root route
   }

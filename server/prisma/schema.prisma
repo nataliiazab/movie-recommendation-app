@@ -7,7 +7,7 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
-// This is the Prisma client generator, you don't need to change it
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -17,6 +17,8 @@ model Movie {
   id     Int     @id @default(autoincrement())
   title  String
   genre  String
-  year   Int     // Year of release
-  rating Float   // IMDb rating
+  year   Int    
+  rating Float
+  description String
+  image String
 }

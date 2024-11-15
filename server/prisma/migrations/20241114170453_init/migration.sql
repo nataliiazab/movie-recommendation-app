@@ -5,6 +5,8 @@ CREATE TABLE "Movie" (
     "genre" TEXT NOT NULL,
     "year" INTEGER NOT NULL,
     "rating" DOUBLE PRECISION NOT NULL,
+    "description" TEXT NOT NULL,
+    "image" TEXT NOT NULL,
 
     CONSTRAINT "Movie_pkey" PRIMARY KEY ("id")
 );

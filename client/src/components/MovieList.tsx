@@ -1,38 +1,17 @@
-// client/src/components/MovieList.tsx
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
+import useFetchMovies from "../hooks/useFetchMovies";
 import MovieCard from "./MovieCard";
-
-type Movie = {
-  id: number;
-  title: string;
-  description: string;
-  rating: number;
-  genre: string;
-  year: number;
-  image: string;
-};
+import Loader from "./Loader";
 
 const MovieList: React.FC = () => {
-  const [movies, setMovies] = useState<Movie[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    // Fetch movies from your backend API
-    axios
-      .get("https://movie-recommendation-app-server.vercel.app/movies")
-      .then((response) => {
-        setMovies(response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching movies:", error);
-        setLoading(false);
-      });
-  }, []);
+  const { movies, loading, error } = useFetchMovies();
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loader />;
+  }
+
+  if (error) {
+    return <div className="text-red-500 text-center">{error}</div>;
   }
 
   return (

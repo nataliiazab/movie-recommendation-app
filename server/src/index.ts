@@ -21,7 +21,7 @@ async function rootHandler(
   req: VercelRequest | Request,
   res: VercelResponse | Response
 ) {
-  res.send("Welcome to the Movie Recommendation API");
+  res.send("Welcome to the Movie Recommendation API!");
 }
 
 // Movie route

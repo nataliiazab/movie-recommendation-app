@@ -5,7 +5,7 @@ const Header = () => {
     <header className="bg-gradient-to-r from-indigo-600 to-purple-600 p-6 text-white flex justify-between items-center rounded-b-xl shadow-xl">
       <div className="flex items-center space-x-4">
         <h1 className="text-3xl font-bold tracking-tight uppercase">
-          Movie Finder
+          Movie App
         </h1>
         <p className="text-sm font-semibold">
           Find the next movie to watch.

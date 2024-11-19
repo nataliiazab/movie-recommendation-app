@@ -3,7 +3,6 @@ import React from "react";
 import useFetchMovies from "../hooks/useFetchMovies";
 import MovieCard from "./MovieCard";
 import Loader from "./Loader";
-import axios from "axios";
 
 const MovieList: React.FC = () => {
   const { movies, loading, error } = useFetchMovies();

@@ -21,17 +21,27 @@ async function rootHandler(
   req: VercelRequest | Request,
   res: VercelResponse | Response
 ) {
-  res.send("Welcome to the Movie Recommendation API");
+  res.send(
+    "Welcome to the Movie Recommendation API developed by Nataliia Zablotska for her Movie Finder project"
+  );
 }
 
-// Movie route
+// Movie route with paginaation
 async function movieHandler(
   req: VercelRequest | Request,
   res: VercelResponse | Response
 ) {
+  const skip = parseInt(req.query.page as string) || 0;
+  const take = parseInt(req.query.limit as string) || 10;
+
   try {
-    const movies = await prisma.movie.findMany();
-    res.json(movies);
+    const movies = await prisma.movie.findMany({
+      skip,
+      take,
+    });
+    const totalMovies = await prisma.movie.count();
+
+    res.json({ movies, totalMovies, currentPage: Math.floor(skip / take) + 1, totalPages: Math.ceil(totalMovies / take) });
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch movies" });
   }

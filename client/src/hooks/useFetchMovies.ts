@@ -21,9 +21,9 @@ const useFetchMovies = (currentPage: number, pageSize: number) => {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const response = await axios.get(
-          `https://movie-recommendation-app-server.vercel.app/movies?page=${currentPage}&limit=${pageSize}`
-        );
+        const url = `https://movie-recommendation-app-server.vercel.app/movies?page=${currentPage}&limit=${pageSize}`;
+        console.log("Fetching from:", url); // Log the request URL for debugging
+        const response = await axios.get(url);
         setMovies(response.data.movies);
         setTotalPages(response.data.totalPages);
       } catch (err) {

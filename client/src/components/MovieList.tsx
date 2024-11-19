@@ -49,21 +49,21 @@ const MovieList: React.FC = () => {
       </ul>
 
       {/* Pagination Controls */}
-      <div className="flex justify-between mt-8">
+      <div className="flex justify-center items-center mt-10 space-x-6">
         <button
           onClick={prevPage}
           disabled={currentPage === 1}
-          className="px-4 py-2 bg-gray-500 text-white rounded-lg disabled:bg-gray-300"
+          className="px-6 py-3 bg-transparent border-2 border-gray-400 text-gray-700 font-medium rounded-full transition-all duration-300 hover:bg-gray-200 disabled:text-gray-300 disabled:border-gray-300"
         >
           Prev
         </button>
-        <span className="text-xl font-bold">
+        <span className="text-lg font-medium text-gray-700">
           Page {currentPage} of {totalPages}
         </span>
         <button
           onClick={nextPage}
           disabled={currentPage === totalPages}
-          className="px-4 py-2 bg-gray-500 text-white rounded-lg disabled:bg-gray-300"
+          className="px-6 py-3 bg-transparent border-2 border-gray-400 text-gray-700 font-medium rounded-full transition-all duration-300 hover:bg-gray-200 disabled:text-gray-300 disabled:border-gray-300"
         >
           Next
         </button>

@@ -26,29 +26,23 @@ async function rootHandler(
   );
 }
 
-// Movie route with pagination
-async function movieHandler(req: VercelRequest | Request, res: VercelResponse | Response) {
-  const page = parseInt(req.query.page as string) || 1;  
-  const limit = parseInt(req.query.limit as string) || 10; 
-
-  const skip = (page - 1) * limit;
+// Movie route with paginaation
+async function movieHandler(
+  req: VercelRequest | Request,
+  res: VercelResponse | Response
+) {
+  const skip = parseInt(req.query.page as string) || 0;
+  const take = parseInt(req.query.limit as string) || 10;
 
   try {
     const movies = await prisma.movie.findMany({
       skip,
-      take: limit,
+      take,
     });
-    const totalMovies = await prisma.movie.count(); // Get the total count of movies
-    const totalPages = Math.ceil(totalMovies / limit);
+    const totalMovies = await prisma.movie.count();
 
-    res.json({
-      movies,
-      totalMovies,
-      currentPage: page,
-      totalPages,
-    });
+    res.json({ movies, totalMovies, currentPage: Math.floor(skip / take) + 1, totalPages: Math.ceil(totalMovies / take) });
   } catch (error) {
-    console.error("Error fetching movies:", error);
     res.status(500).json({ error: "Failed to fetch movies" });
   }
 }

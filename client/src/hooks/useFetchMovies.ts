@@ -12,20 +12,18 @@ type Movie = {
   image: string;
 };
 
-const useFetchMovies = (currentPage: number, pageSize: number) => {
+const useFetchMovies = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [totalPages, setTotalPages] = useState<number>(1);
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
         const response = await axios.get(
-          `https://movie-recommendation-app-server.vercel.app/movies?page=${currentPage}&limit=${pageSize}`
+          "https://movie-recommendation-app-server.vercel.app/movies"
         );
-        setMovies(response.data.movies);
-        setTotalPages(response.data.totalPages);
+        setMovies(response.data);
       } catch (err) {
         setError("Error fetching movies.");
         console.error(err);
@@ -35,9 +33,9 @@ const useFetchMovies = (currentPage: number, pageSize: number) => {
     };
 
     fetchMovies();
-  }, [currentPage, pageSize]);
+  }, []);
 
-  return { movies, loading, error, totalPages };
+  return { movies, loading, error };
 };
 
 export default useFetchMovies;

@@ -6,7 +6,11 @@ type Movie = {
   id: number;
   title: string;
   description: string;
-  rating: number;
+  rating: {
+    imdb: string;
+    metacritic: string;
+    rottenTomatoes: string;
+  };
   genre: string;
   year: number;
   image: string;

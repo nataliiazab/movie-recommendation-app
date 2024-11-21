@@ -5,7 +5,11 @@ type Movie = {
   id: number;
   title: string;
   description: string;
-  rating: number;
+  rating: {
+    imdb: string;
+    metacritic: string;
+    rottenTomatoes: string;
+  };
   genre: string;
   year: number;
   image: string;
@@ -52,8 +56,30 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
           onLoad={() => setImageLoaded(true)}
           onError={() => setImageError(true)}
         />
-        <div className="absolute top-2 left-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded">
-          ⭐ {movie.rating.toFixed(1)}
+        <div className="absolute top-2 left-2 right-2 flex justify-between items-center gap-2">
+          <div className="flex items-center gap-1 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded">
+            <div className="relative w-8 h-4 overflow-hidden">
+              <img
+                src="/imdb.webp"
+                alt="IMDb"
+                className="object-cover w-full h-full"
+                style={{ objectPosition: "center" }}
+              />
+            </div>
+            {movie.rating.imdb}
+          </div>
+          <div className="flex items-center gap-1 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded">
+            <img src="/metacritic.png" alt="Metacritic" className="h-4 w-4" />
+            {movie.rating.metacritic}
+          </div>
+          <div className="flex items-center gap-1 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded">
+            <img
+              src="/rotten-tomatoes.png"
+              alt="Rotten Tomatoes"
+              className="h-4 w-4"
+            />
+            {movie.rating.rottenTomatoes}
+          </div>
         </div>
       </div>
 

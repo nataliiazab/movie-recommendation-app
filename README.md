@@ -16,6 +16,30 @@ The app consists of two primary components:
 2. **Server**  
    An Express.js server for API endpoints hosted on **Vercel**, using **Prisma** for database interactions.
 
+   **Current Server Structure:**
+```bash
+   1) server
+   1.1) node_modules
+   1.2) prisma
+      1.2.1) migrations
+         1.2.1.1) 20241114170453_init
+            1.2.1.1.1) migration.sql
+         1.2.1.2) 20241121144335_update_rating_to_json
+            1.2.1.2.1) migration.sql
+         1.2.1.3) migration_lock.toml
+      1.2.2) dev.db
+      1.2.3) schema.prisma
+      1.2.4) seed.ts
+   1.3) src
+      1.3.1) index.ts
+   1.4) .env
+   1.5) .gitignore
+   1.6) package-lock.json
+   1.7) package.json
+   1.8) tsconfig.json
+   1.9) vercel.json
+```
+
 ### API Workflow
 
 - **Frontend** communicates with the backend through RESTful API endpoints.

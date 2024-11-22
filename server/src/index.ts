@@ -38,7 +38,7 @@ async function movieHandler(
 }
 
 // Local development server (using Express)
-if (process.env.VERCEL === undefined) {
+if (process.env.NODE_ENV !== "test" && process.env.VERCEL === undefined) {
   // If running locally, use Express
   app.get("/", rootHandler);
   app.get("/movies", movieHandler);
